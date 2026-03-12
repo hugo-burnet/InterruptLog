@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InterruptLog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="logo">⬡ InterruptLog</div>
+  <div class="live-clock" id="clock">--:--:--</div>
+  <div class="day-stats">
+    <div>STOPS&nbsp;<span id="stat-count">0</span></div>
+    <div>TIME LOST&nbsp;<span id="stat-time">0m</span></div>
+    <div>TOO LONG&nbsp;<span id="stat-top">—</span></div>
+  </div>
+</header>
+
+<!-- ── MAIN 2-COLONNES ────────────────────────────────────────────────────── -->
+<main>
+
+  <!-- ── GAUCHE : INTERRUPTEURS ── -->
+  <div class="panel-people">
+    <div class="panel-title">Collaborateurs</div>
+
+    <div class="people-list" id="people-list">
+    </div>
+
+    <!-- Formulaire ajout -->
+    <div class="add-person-area">
+      <div class="add-inputs">
+        <input type="text" id="input-name" placeholder="Nom…" maxlength="40" />
+        <input type="text" id="input-role" placeholder="Rôle (CDT, Atelier…)" maxlength="40" />
+      </div>
+      <button class="btn-add" id="btn-add-person">+</button>
+    </div>
+  </div>
+
+  <!-- ── DROITE : ZONE ACTIVE + JOURNAL ── -->
+  <div class="panel-main">
+
+    <!-- Zone interruption active -->
+    <div class="interrupt-zone">
+      <div class="interrupt-idle" id="idle-msg">
+        <span class="arrow">›</span>Clique sur un nom pour démarrer le chrono
+      </div>
+
+      <div class="interrupt-active" id="active-zone">
+        <div class="pulse-dot"></div>
+        <div class="interrupt-who">
+          <div class="label">En cours</div>
+          <div class="name" id="active-name">—</div>
+          <div class="role" id="active-role"></div>
+        </div>
+        <div class="interrupt-timer-block">
+          <div class="label">Durée</div>
+          <div class="timer-display" id="timer">00:00</div>
+        </div>
+        <div class="interrupt-meta">
+          <div class="meta-row">DÉBUT&nbsp;<span id="active-start">—</span></div>
+          <div class="click-counter">
+            Clics souris : <span class="val" id="click-count">0</span>
+          </div>
+          <div class="meta-row" style="font-size:10px;margin-top:2px;">
+            Fichier AutoCAD&nbsp;:&nbsp;<span id="active-file" style="color:var(--muted)">non détecté</span>
+          </div>
+        </div>
+        <button class="btn-stop" id="btn-stop">■ Terminer</button>
+      </div>
+    </div>
+
+    <!-- Journal -->
+    <div class="log-header">
+      <div class="log-title">Journal du jour</div>
+      <button class="btn-export" id="btn-export">↓ Exporter CSV</button>
+    </div>
+    <div class="log-list" id="log-list">
+      <div class="log-empty">Aucune session enregistrée</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div>InterruptLog v0.1 — Omistone — données locales</div>
+  <div class="footer-total">
+    <div>TOTAL&nbsp;<span class="val" id="footer-total-time">0 min</span></div>
+    <div>SESSIONS&nbsp;<span class="val" id="footer-sessions">0</span></div>
+  </div>
+</footer>
+
+<!-- ── MODAL RENOMMER ─────────────────────────────────────────────────────── -->
+<div id="modal-overlay" class="hidden">
+  <div class="modal">
+    <div class="modal-title">Modifier</div>
+    <input type="text" id="modal-name" placeholder="Nom" maxlength="40" />
+    <input type="text" id="modal-role" placeholder="Rôle" maxlength="40" />
+    <div class="modal-actions">
+      <button class="btn-secondary" id="modal-cancel">Annuler</button>
+      <button class="btn-accent" id="modal-confirm">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="main.js"></script>
+</body>
+</html>

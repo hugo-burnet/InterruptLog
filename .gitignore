@@ -1,0 +1,40 @@
+# Rust / Cargo
+src-tauri/target/
+
+# Node
+node_modules/
+
+# Tauri generated
+src-tauri/gen/
+
+# DB locale (données personnelles)
+*.db
+*.db-shm
+*.db-wal
+
+# Exports CSV
+*.csv
+
+# Env / secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editeurs
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Claude Code
+.claude/
+
+# Logs
+*.log
+
+# Build outputs (sauf le setup final si voulu)
+src-tauri/target/release/bundle/

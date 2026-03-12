@@ -1,0 +1,8 @@
+{
+  "identifier": "default",
+  "description": "Capability par défaut InterruptLog",
+  "windows": ["main"],
+  "permissions": [
+    "core:default"
+  ]
+}
