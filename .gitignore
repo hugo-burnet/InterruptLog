@@ -7,6 +7,10 @@ node_modules/
 # Tauri generated
 src-tauri/gen/
 
+# DLL binaries bundlés avec l'app (ne pas committer)
+src-tauri/*.dll
+src-tauri/resources/
+
 # DB locale (données personnelles)
 *.db
 *.db-shm

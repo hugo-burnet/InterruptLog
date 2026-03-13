@@ -27,6 +27,7 @@
     "active": true,
     "targets": ["nsis"],
     "icon": ["icons/icon.ico"],
+    "resources": ["WebView2Loader.dll"],
     "windows": {
       "webviewInstallMode": {
         "type": "offlineInstaller",
